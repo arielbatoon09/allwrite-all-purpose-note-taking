@@ -1,0 +1,129 @@
+.dashboard-body{
+    background: $clr-bg;
+}
+.dashboard{
+    height: 100%;
+    .dashboard-inner-wrap{
+        margin: 0 20px;
+        .dashboard-title{
+            margin-top: -35px;
+            i{
+                background: linear-gradient(150deg, rgba(214, 136, 255), rgba(158, 89, 255));
+                color: $clr-white;
+                padding: 15px;
+                border-radius: 5px;
+                font-size: 1.2rem;
+            }
+            h4{
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin: 10px 10px;
+            }
+        }
+        .card{
+            border: none;
+            padding: 50px 20px;
+            color: $clr-white;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            position: relative;
+            .card-body{
+                .card-title{
+                    font-size: 1.5rem;
+                    font-weight: 600;  
+                }
+                .card-link:hover{
+                    text-decoration: underline;
+                }
+                i{
+                    margin-left: 10px;
+                    transition: all 0.2s ease-out;
+                    &:hover{
+                        margin-left: 20px;
+                        transition: all 0.2s ease-in;
+                    }
+                }
+                .circle{
+                    position: absolute;
+                    top: 0;
+                    right: -2px;
+                    img{
+                        height: 216px;
+                    }
+                }
+            }
+        }
+        .card-box-1{
+            background: linear-gradient(150deg, rgba(255, 187, 150), rgba(254, 128, 150));
+        }
+        .card-box-2{
+            background: linear-gradient(150deg, rgba(137, 198, 248), rgba(32, 141, 228));
+        }
+        .card-box-3{
+            background: linear-gradient(150deg, rgba(128, 217, 209), rgba(43, 208, 184));
+        }
+        .card-box-4{
+            background: linear-gradient(150deg, rgba(216, 138, 255), rgba(168, 97, 255 ));
+        }
+        .dashboard-content{
+            .dashboard-content-wrap{
+                background: $clr-white;
+                padding: 20px 50px;
+                border-radius: 10px;
+                .search-box{
+                    position: relative;
+                    input{
+                        border: 2px solid $clr-gray;
+                        border-radius: 20px;
+                        outline: none;
+                        padding: 5px 50px;
+                        color: $clr-black;
+                    }
+                    i{
+                        font-size: 1.2rem;
+                        color: $clr-gray;
+                        position: absolute;
+                        left: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                        &:hover{
+                            color: $clr-darken-gray;
+                        }
+                    }
+                }
+                .dashboard-content-list{
+                    .dashboard-box{
+                        background: $clr-lighten-gray;
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        border-radius: 10px;
+                        .left-box{
+                            h5{
+                                font-weight: 600;
+                            }
+                            p{
+                                margin: -5px 0 0 0;
+                            }
+                            span{
+                                color: $clr-darken-gray;
+                            }
+                        }
+                        .right-box{
+                            i{
+                                background: $clr-primary;
+                                color: $clr-white;
+                                padding: 8px;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                transition: all 0.2s ease-out;
+                                &:hover{
+                                    background: #8B39FD;
+                                    transition: all 0.2s ease-in;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

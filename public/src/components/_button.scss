@@ -1,0 +1,41 @@
+.btn-primary{
+    width: 100%;
+    border: none;
+    outline: none;
+    background: $clr-primary;
+    color: $clr-white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    transition: all 0.2s ease-out;
+}
+.btn-primary:hover{
+    background: #8B39FD;
+    transition: all 0.2s ease-in;
+}
+.btn-secondary{
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, rgba(214, 136, 255), rgba(158, 89, 255));
+    color: $clr-white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 5px;
+    i{
+        margin-right: 10px;
+    }
+    &:hover{
+        background: linear-gradient(180deg, rgba(214, 136, 255), rgba(158, 89, 255));
+        box-shadow: rgba(220, 238, 255,0.5) 0px 4px 12px;
+    }
+}
+.btn-hamburger{
+    border: 1px solid $clr-gray;
+    &:hover{
+        border: 1px solid $clr-primary;
+    }
+    i{
+        font-size: 1.2rem;
+        color: $clr-black;
+    }
+}

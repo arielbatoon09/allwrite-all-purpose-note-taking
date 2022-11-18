@@ -1,0 +1,101 @@
+.navbar-inner-wrap{
+    background: $clr-white;
+}
+.nav-head{
+    margin: 0 20px;
+}
+.navbar{
+    background: $clr-white;
+    .navbar-brand{
+        .logo{
+            width: 50px;
+        }
+    }
+    .nav-link{
+        cursor: pointer;
+        .fa-bell{
+            font-size: 1.5rem;
+        }
+        .fa-chevron-down{
+            color: $clr-primary;
+            font-size: 1rem;
+        }
+        .dropdown-menu{
+            position: absolute;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
+    .nav-settings:hover{
+        background: $clr-bg;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+    }
+    .sidebar-nav{
+        padding: 20px;
+        height: 100vh;
+        .nav-item{
+            padding: 0 20px;
+            .nav-link{
+                color: $clr-black;
+                margin-bottom: 20px;
+                .fa-solid{
+                    margin-right: 30px;
+                    font-size: 1.2rem;
+                }
+            }
+            &:hover{
+                background: $clr-gray;
+                border-radius: 10px;
+            }
+        }
+        .active{
+            background: $clr-primary;
+            padding: 0 20px;
+            border-radius: 10px;
+            .nav-link{
+                color: $clr-white;
+            }
+            &:hover{
+                background: $clr-primary;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .nav-head{
+        margin: 0 20px;
+    }
+    .navbar{
+        background: $clr-white;
+        .navbar-brand{
+            margin-left: 0;
+            .logo{
+                width: 50px;
+            }
+        }
+        .nav-link{
+            .dropdown-menu{
+                left: -85px;
+            }
+            .fa-bell{
+                font-size: 1.2rem;
+            }
+        }
+        .sidebar-nav{
+            padding: 5px;
+            .nav-item{
+                padding: 0 20px;
+                .nav-link{
+                    margin-bottom: 5px;
+                    .fa-solid{
+                        margin-right: 5px;
+                    }
+                }
+            }
+            .active{
+                padding: 0 20px;
+            }
+        }
+    }
+}

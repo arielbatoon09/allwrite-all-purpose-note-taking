@@ -1,0 +1,12 @@
+/* HELPER STYLES */
+@import './helper/variables';
+@import './helper/fonts';
+
+/* GLOBAL STYLES */
+@import './global/global';
+
+/* COMPONENTS STYLE */
+@import './components/button';
+@import './components/authentication';
+@import './components/navigation';
+@import './components/dashboard';
