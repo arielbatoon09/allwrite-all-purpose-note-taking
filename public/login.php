@@ -42,7 +42,7 @@ if(isset($_SESSION['isLoggedIn'])){
           </div>
           <!-- Auth-Inputs -->
           <div class="auth-right col-lg-6">
-            <h2 class="text-uppercase mb-4">Login Now</h2>
+            <h2 class="text-uppercase mb-4">Login to your account</h2>
             <div class="auth-input">
               <label for="email" class="form-label">E-Mail Address:</label>
               <input type="email" class="form-control" id="email" placeholder="Enter E-Mail Address">

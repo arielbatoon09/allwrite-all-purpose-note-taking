@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(isset($_SESSION['isLoggedIn'])){
+if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
   if($_SESSION["isLoggedIn"] != 'success'){
     Header('Location: ./');
   }
@@ -163,19 +163,17 @@ if(isset($_SESSION['isLoggedIn'])){
                         <div class="container py-100">
                             <!-- Dashboard-Overview -->
                             <div class="dashboard-content">
-                                <a href="./subject.php" class="href-link ms-2"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
+                                <a href="./subject.php" class="href-link ms-2" id="btn-back"><i class="fa-solid fa-arrow-left"></i> Go Back</a>
                                 <div class="dashboard-content-wrap mt-4">
-                                    <div class="dashboard-content-new" id="dashboard-content-list">
+                                    <div class="dashboard-content-new">
                                         <div class="mb-3 d-flex flex-column">
-                                            <span class="label">Title</span>
-                                            <input class="title form-control" id="title">                                        
+                                            <span class="label">Title (Read Only)</span>
+                                            <input class="title form-control" id="title" value="" readonly>                                        
                                         </div>
                                         <div class="mb-3 d-flex flex-column">
-                                            <span class="label">Description</span> 
-                                            <textarea class="description form-control" id="description"></textarea>
+                                            <span class="label">Description (Read Only)</span> 
+                                            <textarea class="description form-control" id="description" readonly></textarea>
                                         </div>
-                                        <button class="btn-secondary mt-2" 
-                                        id="btn-add-notes">SAVE</button>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +194,8 @@ if(isset($_SESSION['isLoggedIn'])){
     <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
     <script src="../assets/scripts/jquery.js"></script>
     <script src="../assets/scripts/main.js"></script>
-    <script src="../../middleware/addSubNotes.js"></script>
+    <script src="../../middleware/dashboard.js"></script>
+    <script src="../../middleware/editSubNotes.js"></script>
 </body>
 
 </html>

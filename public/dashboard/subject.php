@@ -1,10 +1,10 @@
-<?php 
+<?php
 session_start();
-if(isset($_SESSION['isLoggedIn'])){
-  if($_SESSION["isLoggedIn"] != 'success'){
-    Header('Location: ./');
-  }
-}else{
+if (isset($_SESSION['isLoggedIn'])) {
+    if ($_SESSION["isLoggedIn"] != 'success') {
+        Header('Location: ./');
+    }
+} else {
     Header('Location: ../login.php');
 }
 ?>
@@ -168,7 +168,7 @@ if(isset($_SESSION['isLoggedIn'])){
                             <!-- Dashboard-Overview -->
                             <div class="dashboard-content">
                                 <button class="btn-secondary" id="btn-add">
-                                <i class="fa-solid fa-plus"></i>Add New</button>
+                                    <i class="fa-solid fa-plus"></i>Add New</button>
                                 <div class="dashboard-content-wrap mt-4">
                                     <div class="search-box">
                                         <input type="text" placeholder="Search notes">
@@ -204,7 +204,7 @@ if(isset($_SESSION['isLoggedIn'])){
     <script src="../assets/scripts/jquery.js"></script>
     <script src="../assets/scripts/main.js"></script>
     <script src="../../middleware/dashboard.js"></script>
-    <script src="../../middleware/viewSubNotes.js"></script>
+    <script src="../../middleware/subnotes.js"></script>
 </body>
 
 </html>

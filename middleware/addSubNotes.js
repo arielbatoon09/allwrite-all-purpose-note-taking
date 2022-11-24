@@ -11,7 +11,8 @@ const requestDoAddNotes =(title, description)=> {
         data: {choice: 'addSubNotes', title:title, description:description },
         success: function(data) {
             alert(data);
-            setInterval('location.reload()', 2000);
+            setInterval('location.reload()', 200);
+            window.location.href = "./subject.php";
         },
         error: function(thrownError) {
             alert(thrownError);
