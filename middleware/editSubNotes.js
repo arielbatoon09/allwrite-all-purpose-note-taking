@@ -47,7 +47,7 @@ const requestDoViewSubNotes =()=> {
 const requestUnsetNoteIdSession =()=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/subnotes.php",
         data: {choice:'unsetSessionBoxId'}
     });
 };
