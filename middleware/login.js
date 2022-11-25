@@ -23,7 +23,7 @@ const checkIfValid =(email, password)=> {
 const requestLogin =(email, password)=> {
     $.ajax({
         type: "POST",
-        url: "../services/router/router-auth.php",
+        url: "../services/router/auth.php",
         data: {choice: 'login', email:email, password:password},
         success: function(data) {
             switch(data){

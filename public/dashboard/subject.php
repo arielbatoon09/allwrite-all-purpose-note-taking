@@ -170,8 +170,9 @@ if (isset($_SESSION['isLoggedIn'])) {
                                 <button class="btn-secondary" id="btn-add">
                                     <i class="fa-solid fa-plus"></i>Add New</button>
                                 <div class="dashboard-content-wrap mt-4">
+                                    <!-- Search-Box -->
                                     <div class="search-box">
-                                        <input type="text" placeholder="Search notes">
+                                        <input type="text" placeholder="Search notes" id="search-input">
                                         <i class="fa-solid fa-magnifying-glass" id="btn-search"></i>
                                     </div>
                                     <div class="dashboard-content-list" id="dashboard-content-list">
@@ -189,8 +190,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                             <footer class="text-center mt-50">
                                 <hr class="border-bottom">
                                 <p class="fw-medium text-muted mt-4">Created by <a href="https://www.arielbatoon.com/"
-                                        class="href-link">Ariel Batoon</a>. All
-                                    Rights Reserved.</p>
+                                        class="href-link">Ariel Batoon</a>. All Rights Reserved.</p>
                             </footer>
                         </div>
                     </div>

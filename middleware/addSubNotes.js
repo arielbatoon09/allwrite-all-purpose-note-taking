@@ -7,7 +7,7 @@ $('#btn-add-notes').click(function(){
 const requestDoAddNotes =(title, description)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/subnotes.php",
         data: {choice: 'addSubNotes', title:title, description:description },
         success: function(data) {
             alert(data);

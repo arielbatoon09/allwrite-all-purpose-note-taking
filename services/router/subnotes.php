@@ -1,13 +1,8 @@
 <?php 
 session_start();
-require('../server/dashboard.php');
+require('../server/subject_notes.php');
 if(isset($_POST['choice'])){
-    switch($_POST['choice']){
-        case 'profileName':
-            $dashboard = new dashboard();
-            echo $dashboard->doViewName();
-            break;
-            
+    switch($_POST['choice']){            
         case 'addSubNotes':
             $dashboard = new dashboard();
             echo $dashboard->doAddSubNotes($_POST['title'], $_POST['description']);
@@ -32,6 +27,11 @@ if(isset($_POST['choice'])){
             $dashboard = new dashboard();
             echo $dashboard->doSetSessionBoxId($_POST['boxId']);
             break;
+        
+        case 'getSearchDisplay':
+            $dashboard = new dashboard();
+            echo $dashboard->doSetSearchDisplay($_POST['searchInp']);
+            break;    
 
         case 'updateSubNotes':
             $dashboard = new dashboard();
@@ -40,11 +40,6 @@ if(isset($_POST['choice'])){
 
         case 'unsetSessionBoxId':
             unset($_SESSION["setBoxId"]);
-            break;
-
-
-        case 'logout':
-            session_destroy();
             break;
     }
 }

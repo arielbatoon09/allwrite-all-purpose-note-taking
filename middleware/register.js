@@ -37,7 +37,7 @@ const checkIfValid =(fullname, email, password, confirmpass)=> {
 const requestRegister =(fullname, email, password, confirmpass)=> {
     $.ajax({
         type: "POST",
-        url: "../services/router/router-auth.php",
+        url: "../services/router/auth.php",
         data: {choice: 'register', fullname:fullname, email:email, 
         password:password, confirmpass:confirmpass},
         success: function(data) {

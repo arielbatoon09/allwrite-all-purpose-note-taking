@@ -12,13 +12,10 @@ $('#btn-back').click(function(){
     requestUnsetNoteIdSession();
 });
 
-//$('#title').val('values');
-//$('#description').val('Test2');
-
 const requestDoGetNewSubNotes =(newTitle, newDescription)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/subnotes.php",
         data: {choice:'updateSubNotes', title:newTitle, description:newDescription},
         success: function(data){
             alert(data);
@@ -31,7 +28,7 @@ const requestDoGetNewSubNotes =(newTitle, newDescription)=> {
 const requestDoViewSubNotes =()=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/subnotes.php",
         data: {choice: 'displaySubNotes'},
         success: function(data) {
             let json = JSON.parse(data);

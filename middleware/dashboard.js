@@ -12,7 +12,7 @@ $('#btn-add').click(function(){
 const requestDoViewName =()=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/dashboard.php",
         data: {choice: 'profileName'},
         success: function(data) {
             $('#profile-name').html(data);
@@ -26,7 +26,7 @@ const requestDoViewName =()=> {
 const requestLogout =() => {
     $.ajax({
         type: "POST",
-        url: "../../services/router/router-dashboard.php",
+        url: "../../services/router/dashboard.php",
         data: {choice: 'logout'},
         success: function(data) {
             window.location.href = "../login.php";
