@@ -4,15 +4,24 @@
 .nav-head{
     margin: 0 20px;
 }
+.navbar-brand{
+    .logo{
+        width: 42px;
+    }
+    .logo-title{
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family:'Trebuchet MS';
+        color: $clr-secondary;
+        margin-left: 10px;
+        letter-spacing: 1px;
+    }
+}
 .navbar{
     background: $clr-white;
-    .navbar-brand{
-        .logo{
-            width: 50px;
-        }
-    }
     .nav-link{
         cursor: pointer;
+        position: relative;
         .fa-bell{
             font-size: 1.5rem;
         }
@@ -21,8 +30,8 @@
             font-size: 1rem;
         }
         .dropdown-menu{
+            transform: translateX(0%);
             position: absolute;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
     }
     .nav-settings:hover{
@@ -31,6 +40,7 @@
         transition: all 0.2s ease-in-out;
     }
     .sidebar-nav{
+        width: 100%;
         padding: 20px;
         height: 100vh;
         .nav-item{
@@ -49,14 +59,14 @@
             }
         }
         .active{
-            background: $clr-primary;
+            background: linear-gradient(90deg, $clr-secondary, $clr-primary);
             padding: 0 20px;
             border-radius: 10px;
             .nav-link{
                 color: $clr-white;
             }
             &:hover{
-                background: $clr-primary;
+                background: linear-gradient(90deg, $clr-secondary, $clr-primary);
             }
         }
     }
@@ -75,18 +85,21 @@
             }
         }
         .nav-link{
-            .dropdown-menu{
-                left: -85px;
-            }
             .fa-bell{
                 font-size: 1.2rem;
             }
+            .dropdown-menu{
+                transform: translateX(-60%);
+                position: absolute;
+            }
         }
         .sidebar-nav{
-            padding: 5px;
+            width: 500px;
+            padding: 20px;
             .nav-item{
                 padding: 0 20px;
                 .nav-link{
+                    position: relative;
                     margin-bottom: 5px;
                     .fa-solid{
                         margin-right: 5px;

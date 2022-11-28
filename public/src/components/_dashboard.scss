@@ -8,7 +8,7 @@
         .dashboard-title{
             margin-top: -35px;
             i{
-                background: linear-gradient(150deg, rgba(214, 136, 255), rgba(158, 89, 255));
+                background: linear-gradient(150deg, $clr-primary, $clr-secondary);
                 color: $clr-white;
                 padding: 15px;
                 border-radius: 5px;
@@ -31,16 +31,9 @@
                     font-size: 1.5rem;
                     font-weight: 600;  
                 }
-                .card-link:hover{
-                    text-decoration: underline;
-                }
                 i{
                     margin-left: 10px;
                     transition: all 0.2s ease-out;
-                    &:hover{
-                        margin-left: 20px;
-                        transition: all 0.2s ease-in;
-                    }
                 }
                 .circle{
                     position: absolute;
@@ -65,6 +58,12 @@
             background: linear-gradient(150deg, rgba(216, 138, 255), rgba(168, 97, 255 ));
         }
         .dashboard-content{
+            #btn-back{
+                font-size: 1.1rem;
+                i{
+                    margin-right: 10px;
+                }
+            }
             .dashboard-content-wrap{
                 width: 100%;
                 background: $clr-white;
@@ -102,8 +101,7 @@
                             h5{
                                 font-weight: 600;
                             }
-                            p{
-
+                            .descr{
                                 max-width: 500px; 
                                 overflow:hidden; 
                                 text-overflow:ellipsis; 
@@ -116,14 +114,14 @@
                         }
                         .right-box{
                             i{
-                                background: $clr-primary;
+                                background: linear-gradient(150deg, $clr-primary, $clr-secondary);
                                 color: $clr-white;
                                 padding: 8px;
                                 border-radius: 50%;
                                 cursor: pointer;
                                 transition: all 0.2s ease-out;
                                 &:hover{
-                                    background: #8B39FD;
+                                    transform: scale(1.1);
                                     transition: all 0.2s ease-in;
                                 }
                             }
@@ -154,9 +152,16 @@
 }
 
 @media only screen and (max-width: 992px){
-    .search-box{
-        input{
-            width: 100%;
+    .dashboard{
+        .dashboard-inner-wrap{
+            .dashboard-content{
+                .dashboard-content-wrap{
+                    padding: 20px 15px;
+                    .search-box{
+                        width: 100%;
+                    }
+                }
+            }
         }
     }
 }

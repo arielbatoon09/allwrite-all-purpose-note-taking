@@ -5,9 +5,6 @@ $(document).ready(function(){
 $('#btn-logout').click(function(){
     requestLogout();
 });
-$('#btn-add').click(function(){
-    window.location.href = "./add_notes.php";
-})
 
 const requestDoViewName =()=> {
     $.ajax({

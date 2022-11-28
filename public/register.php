@@ -29,35 +29,35 @@ if(isset($_SESSION['isLoggedIn'])){
 	<!-- Main-Container -->
 	<main class="page">
 		<!-- Authentication-Section -->
-		<section class="auth-form pb-100">
+		<section class="auth-form">
 			<div class="container">
-				<div class="auth-wrapper row mx-auto my-50">
-					<!-- Auth-About -->
-					<div class="auth-left col-lg-6 mb-3 mb-lg-0">
-						<div class="auth-brand">
-							<img src="assets/img/logo.png" alt="..." />
-							<h1>allwrite</h1>
-						</div>
-						<img class="d-none d-lg-block" src="assets/img/auth-img.svg" alt="..." />
-					</div>
+				<div class="row mx-auto py-50 d-flex justify-content-center align-items-center">
 					<!-- Auth-Inputs -->
-					<div class="auth-right col-lg-6">
-						<h2 class="text-uppercase mb-4">Create an account</h2>
-						<div class="auth-input">
-							<label for="fullname" class="form-label">Full Name:</label>
-							<input type="text" class="form-control" id="fullname" placeholder="Enter Fullname" />
-							<i class="fa-solid fa-user"></i>
+					<div class="auth-inputs col-12 col-lg-6 pt-5">
+						<h2 class="text-uppercase">Create an account</h2>
+						<p class="text-muted mb-4">to enjoy all of the cool features ✌️</p>
+						<div class="d-block d-sm-flex gap-2">
+							<div class="auth-input">
+								<label for="firstname" class="form-label">First Name</label>
+								<input type="text" class="form-control" id="firstname" placeholder="First Name" />
+								<i class="fa-solid fa-user"></i>
+							</div>
+							<div class="auth-input">
+								<label for="lastname" class="form-label">Last Name</label>
+								<input type="text" class="form-control" id="lastname" placeholder="Last Name" />
+								<i class="fa-solid fa-user"></i>
+							</div>
 						</div>
 						<div class="auth-input has-validation">
-							<label for="email" class="form-label">E-Mail Address:</label>
-							<input type="email" class="form-control" id="email" placeholder="Enter E-Mail Address" />
+							<label for="email" class="form-label">Email Address</label>
+							<input type="email" class="form-control" id="email" placeholder="Enter Email Address" />
 							<i class="fa-solid fa-envelope"></i>
 							<div class="invalid-feedback">
 								Please include an "@" in the email address.
 							</div>
 						</div>
 						<div class="auth-input has-validation">
-							<label for="password" class="form-label">Password:</label>
+							<label for="password" class="form-label">Password</label>
 							<input type="password" class="form-control" id="password" placeholder="Enter Password" />
 							<i class="fa-solid fa-lock"></i>
 							<div class="invalid-feedback">
@@ -65,22 +65,23 @@ if(isset($_SESSION['isLoggedIn'])){
 							</div>
 						</div>
 						<div class="auth-input">
-							<label for="confirmpass" class="form-label">Confirm Password:</label>
+							<label for="confirmpass" class="form-label">Confirm Password</label>
 							<input type="password" class="form-control" id="confirmpass"
 								placeholder="Confirm Password" />
-							<i class="fa-solid fa-lock"></i>
+							<i class="fa-solid fa-unlock"></i>
 						</div>
-						<div class="auth-terms">
-							<input type="checkbox" id="agreePolicy" name="agree" />
-							<label for="agree" class="form-label text-muted">I've read and agree the
-								<a href="#" class="href-link">Terms and Conditions</a></label>
+						<div class="form-check form-check-inline mb-4">
+							<input class="form-check-input" type="checkbox" id="agreePolicy" value="option1">
+							<label class="form-check-label" for="agreePolicy"> I accept the <a href="#" class="href-link">
+								Terms and Agreement
+							</a> to use the service.</label>
 						</div>
 						<div class="auth-btn">
 							<button class="btn-primary" id="btn-register">Register</button>
 						</div>
 						<hr class="border-bottom mt-4" />
-						<div class="auth-href text-center py-2">
-							<p>
+						<div class="auth-href text-center">
+							<p class="fs-6">
 								Already have an account?
 								<a href="login.php" class="href-link">Login</a>
 							</p>

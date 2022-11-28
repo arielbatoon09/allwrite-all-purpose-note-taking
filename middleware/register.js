@@ -4,7 +4,9 @@ $(".auth-input").keyup(function(event) {
     }
 });
 $('#btn-register').click(function(){
-    let fullname = $('#fullname').val();
+    let firstname = $('#firstname').val();
+    let lastname = $('#lastname').val();
+    let fullname = firstname + " "+lastname;
     let email = $('#email').val();
     let password = $('#password').val();
     let confirmpass = $('#confirmpass').val();
@@ -13,7 +15,8 @@ $('#btn-register').click(function(){
 });
 
 const checkIfValid =(fullname, email, password, confirmpass)=> {
-    if(fullname != "" && email != "" && password != "" && confirmpass != ""){
+    if($('#firstname').val() != "" && $('#lastname').val() != "" 
+    && email != "" && password != "" && confirmpass != ""){
         if(password == confirmpass){
             if($('#agreePolicy').is(":checked")){
                 requestRegister(fullname, email, password, confirmpass);
@@ -46,7 +49,7 @@ const requestRegister =(fullname, email, password, confirmpass)=> {
                     swal("Register Account", "You created sucessfully. Login Now!", "success", {
                         button: "Okay",
                     })
-                    setInterval('location.reload()', 3000);
+                    setInterval('window.location.href="./login.php"', 1000);
                     break;
                 case 'emailTaken':
                     swal("Error", "Email is already existing!", "error", {

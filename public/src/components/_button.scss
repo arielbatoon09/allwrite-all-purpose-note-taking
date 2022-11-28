@@ -5,18 +5,18 @@
     background: $clr-primary;
     color: $clr-white;
     padding: 10px 50px;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: all 0.2s ease-out;
 }
 .btn-primary:hover{
-    background: #8B39FD;
+    background: #5984fa;
     transition: all 0.2s ease-in;
 }
 .btn-secondary{
     border: none;
     outline: none;
-    background: $clr-primary;
-    //background: linear-gradient(90deg, rgba(214, 136, 255), rgba(158, 89, 255));
+    //background: $clr-primary;
+    background: linear-gradient(90deg, $clr-secondary, $clr-primary);
     color: $clr-white;
     font-size: 1.2rem;
     font-weight: 500;
@@ -27,7 +27,7 @@
         margin-right: 10px;
     }
     &:hover{
-        background: #8B39FD;
+        background: linear-gradient(90deg, $clr-secondary, $clr-primary);
         transition: all 0.2s ease-in;
     }
 }

@@ -1,6 +1,6 @@
 <?php 
 require('../config/database.php');
-class dashboard
+class subject
 {
     // Open Method
     public function doAddSubNotes($title, $description){
@@ -84,8 +84,7 @@ class dashboard
             if($conn->getStatus()){
                 $stmt = $conn->getConnection()->prepare($this->deleteSubNotesQuery());
                 $stmt->execute(array($boxId));
-                $result = $stmt->rowCount();
-                return $result;
+                return 'deletedSuccessfully';
             }else{
                 return 'failedConnection';
             }

@@ -6,28 +6,28 @@ $(".search-box").keyup(function(event) {
 });
 
 $('#btn-add').click(function(){
-    window.location.href = "./add_notes.php";
+    window.location.href = "./add_assignment.php";
 })
 
 $(document).ready(function(){
     // To View All the Data in Subject Notes
-    requestDoViewSubNotes();
+    requestDoViewAssignment();
     // To Search Specific Data in Subject Notes
     $('#btn-search').click(function(){
         let searchInp = $('#search-input').val();
         if(searchInp != ""){
             requestDisplaySearch(searchInp);
         }else{
-            requestDoViewSubNotes();
+            requestDoViewAssignment();
         }
     });
 });
 
-const requestDoViewSubNotes =()=> {
+const requestDoViewAssignment =()=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/subnotes.php",
-        data: {choice: 'viewSubNotes'},
+        url: "../../services/router/assignlist.php",
+        data: {choice: 'viewAssignment'},
         success: function(data) {
             let json = JSON.parse(data);
             let str = "";
@@ -36,30 +36,33 @@ const requestDoViewSubNotes =()=> {
                 `<div class="dashboard-box d-lg-flex justify-content-between align-items-center">`+
                 `<div class="left-box">`+
                     `<h5>`+element.title+`</h5>`+
-                    `<p class="descr">`+element.description+`</p>`+
-                    `<span>`+element.updated_date+`</span>`+
+                    `<p class="mb-1">`+element.description+`</p>`+
+                    `<span>Due Date: `+element.due_date+`</span>`+
+                    `<p class="`+element.status+` fw-semibold mt-1">`+element.status+`</p>`+
                 `</div>`+
                 `<div class="right-box d-flex gap-2 gap-lg-3 mt-2 mt-lg-0">`+
-                    `<i class="fa-regular fa-eye btn-view" id=`+element.id+`></i>`+
-                    `<i class="fa-solid fa-pen btn-edit" id=`+element.id+`></i>`+
+                    `<i class="mark-`+element.status+` fa-solid fa-check btn-complete" id=`+element.id+`></i>`+
                     `<i class="fa-solid fa-trash btn-delete" id=`+element.id+`></i>`+
                 `</div>`+
                 `</div>`;
                 document.getElementById("dashboard-content-list").innerHTML = str;
+                
+                // To Change the Assigment Status
+                $('.Pending').addClass('text-success');
+                $('.Completed').addClass('text-warning');
+                $('.mark-Completed').remove();
+                
+                // Button Functionality
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteSubNotes(boxId);
+                    requestDoDeleteAssignment(boxId);
                     setInterval('location.reload()', 200);
                 });
-                $('.btn-edit').click(function(){
+                $('.btn-complete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestNoteIdSession(boxId);
-                    window.location.href = "./edit_notes.php";
-                });
-                $('.btn-view').click(function(){
-                    let boxId = $(this).attr("id");
-                    requestNoteIdSession(boxId);
-                    window.location.href = "./view_notes.php";
+                    requestDoCompleteAssignment(boxId);
+                    alert('Completed');
+                    setInterval('location.reload()', 200);
                 });
             });
         },
@@ -69,32 +72,32 @@ const requestDoViewSubNotes =()=> {
     });
 };
 
-const requestDoDeleteSubNotes =(boxId)=> {
+const requestDoDeleteAssignment =(boxId)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/subnotes.php",
-        data: {choice:'deleteSubNotes', boxId:boxId},
+        url: "../../services/router/assignlist.php",
+        data: {choice:'deleteAssignment', boxId:boxId},
+        success: function(data){
+            alert(data);
+        }
+    })
+};
+const requestDoCompleteAssignment =(boxId)=> {
+    $.ajax({
+        type: "POST",
+        url: "../../services/router/assignlist.php",
+        data: {choice:'completeAssignment', boxId:boxId},
         success: function(data){
             alert(data);
         }
     })
 };
 
-const requestNoteIdSession =(boxId)=> {
-    $.ajax({
-        type: "POST",
-        url: "../../services/router/subnotes.php",
-        data: {choice:'setSessionBoxId', boxId:boxId},
-        success: function(data){
-            alert(data);
-        }
-    })
-};
 
 const requestDisplaySearch =(searchInp)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/subnotes.php",
+        url: "../../services/router/assignlist.php",
         data: {choice:'getSearchDisplay', searchInp:searchInp},
         success: function(data){
             if(data != 'Not Found Data'){
@@ -106,34 +109,37 @@ const requestDisplaySearch =(searchInp)=> {
                     `<div class="left-box">`+
                         `<h5>`+element.title+`</h5>`+
                         `<p class="descr">`+element.description+`</p>`+
-                        `<span>`+element.updated_date+`</span>`+
+                        `<span>Due Date: `+element.due_date+`</span>`+
+                        `<p class="`+element.status+` fw-semibold mt-1">`+element.status+`</p>`+
                     `</div>`+
                     `<div class="right-box d-flex gap-2 gap-lg-3 mt-2 mt-lg-0">`+
-                        `<i class="fa-regular fa-eye btn-view" id=`+element.id+`></i>`+
-                        `<i class="fa-solid fa-pen btn-edit" id=`+element.id+`></i>`+
+                        `<i class="mark-`+element.status+` fa-solid fa-check btn-complete" id=`+element.id+`></i>`+
                         `<i class="fa-solid fa-trash btn-delete" id=`+element.id+`></i>`+
                     `</div>`+
                     `</div>`;
                     document.getElementById("dashboard-content-list").innerHTML = str;
+                    
+                    // To Change the Assigment Status
+                    $('.Pending').addClass('text-success');
+                    $('.Completed').addClass('text-warning');
+                    $('.mark-Completed').remove();
+                    
+                    // Button Functionality
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteSubNotes(boxId);
+                        requestDoDeleteAssignment(boxId);
                         setInterval('location.reload()', 200);
                     });
-                    $('.btn-edit').click(function(){
+                    $('.btn-complete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestNoteIdSession(boxId);
-                        window.location.href = "./edit_notes.php";
-                    });
-                    $('.btn-view').click(function(){
-                        let boxId = $(this).attr("id");
-                        requestNoteIdSession(boxId);
-                        window.location.href = "./view_notes.php";
+                        requestDoCompleteAssignment(boxId);
+                        alert('Completed');
+                        setInterval('location.reload()', 200);
                     });
                 });
             }else{
                 alert(data);
-                requestDoViewSubNotes();
+                requestDoViewAssignment();
             }
         }
     })

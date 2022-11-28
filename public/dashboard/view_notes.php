@@ -42,9 +42,9 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                             <i class="fa-solid fa-bars"></i>
                         </button>
                         <a href="#">
-                            <div class="navbar-brand d-flex align-items-center">
-                                <img class="logo-title d-none d-lg-block" src="../assets/img/logo-title.png" alt="...">
-                                <img class="logo d-block d-lg-none" src="../assets/img/logo.png" alt="...">
+                            <div class="navbar-brand d-flex align-items-center d-none d-lg-block">
+                                <img class="logo" src="../assets/img/logo.png" alt="...">
+                                <span class="logo-title">AllWrite</span>
                             </div>
                         </a>
                         <div class="ms-auto" id="navbarNav">
@@ -55,7 +55,7 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                                     </div>
                                 </li>
                                 <li class="nav-item nav-settings">
-                                    <div class="nav-link dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="nav-link dropdown" data-bs-toggle="dropdown" aria-expanded="true">
                                         <img src="../assets/img/profile-male.png" alt="..." style="width: 45px;">
                                         <!-- User-Profile -->
                                         <span class="profile-name d-none d-lg-inline" id="profile-name">User</span>
@@ -64,6 +64,7 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                                         <ul class="dropdown-menu mt-2">
                                             <li><a class="dropdown-item" href="#">PIN Code</a></li>
                                             <li><a class="dropdown-item" href="#">Change Password</a></li>
+                                            <li><hr class="dropdown-divider"></li>
                                             <button class="dropdown-item" id="btn-logout">Logout</button>
                                         </ul>
                                     </div>
@@ -78,7 +79,8 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                     <div class="offcanvas-header">
                         <a href="#" class="offcanvas-title" id="offcanvasScrollingLabel">
                             <div class="navbar-brand d-flex align-items-center">
-                                <img src="../assets/img/logo-title.png" alt="..." style="width: 100px;">
+                                <img class="logo" src="../assets/img/logo.png" alt="...">
+                                <span class="logo-title">AllWrite</span>
                             </div>
                         </a>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -100,17 +102,17 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                                     </li>
                                     <li class="nav-item">
                                         <a href="assignment.php" class="nav-link py-3 px-2">
-                                            <span><i class="fa-solid fa-calendar"></i> Assignments</span>
+                                            <span><i class="fa-solid fa-calendar"></i> Assignment</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link py-3 px-2">
+                                        <a href="resources.php" class="nav-link py-3 px-2">
                                             <span><i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                 Resources</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link py-3 px-2">
+                                        <a href="todo.php" class="nav-link py-3 px-2">
                                             <span><i class="fa-solid fa-list"></i> To-Do List</span>
                                         </a>
                                     </li>
@@ -178,10 +180,10 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                                 </div>
                             </div>
                             <!-- Footer -->
-                            <footer class="text-center mt-50">
+                            <footer class="text-center">
                                 <hr class="border-bottom">
-                                <p class="fw-medium text-muted mt-4">Created by <a href="https://www.arielbatoon.com/"
-                                    class="href-link">Ariel Batoon</a>. All Rights Reserved.</p>
+                                <p class="fw-medium text-muted mt-4">Copyright 2022 - <a href="#" 
+                                    class="href-link">AllWrite</a>. All Rights Reserved.</p>
                             </footer>
                         </div>
                     </div>

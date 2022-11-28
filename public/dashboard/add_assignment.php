@@ -1,10 +1,10 @@
-<?php
+<?php 
 session_start();
-if (isset($_SESSION['isLoggedIn'])) {
-    if ($_SESSION["isLoggedIn"] != 'success') {
-        Header('Location: ./');
-    }
-} else {
+if(isset($_SESSION['isLoggedIn'])){
+  if($_SESSION["isLoggedIn"] != 'success'){
+    Header('Location: ./');
+  }
+}else{
     Header('Location: ../login.php');
 }
 ?>
@@ -64,9 +64,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                                         <ul class="dropdown-menu mt-2">
                                             <li><a class="dropdown-item" href="#">PIN Code</a></li>
                                             <li><a class="dropdown-item" href="#">Change Password</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
+                                            <li><hr class="dropdown-divider"></li>
                                             <button class="dropdown-item" id="btn-logout">Logout</button>
                                         </ul>
                                     </div>
@@ -93,7 +91,7 @@ if (isset($_SESSION['isLoggedIn'])) {
                             <nav class="navbar d-flex flex-sm-column flex-row flex-nowrap sticky-top">
                                 <ul class="sidebar-nav">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link py-3 px-2">
+                                        <a href="index.php" class="nav-link py-3 px-2">
                                             <i class="fa-solid fa-house"></i> Home
                                         </a>
                                     </li>
@@ -148,12 +146,12 @@ if (isset($_SESSION['isLoggedIn'])) {
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="resources.php" class="nav-link py-3 px-2">
+                                <a href="#" class="nav-link py-3 px-2">
                                     <span><i class="fa-solid fa-arrow-up-right-from-square"></i> Resources</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="todo.php" class="nav-link py-3 px-2">
+                                <a href="#" class="nav-link py-3 px-2">
                                     <span><i class="fa-solid fa-list"></i> To-Do List</span>
                                 </a>
                             </li>
@@ -165,36 +163,41 @@ if (isset($_SESSION['isLoggedIn'])) {
                     <!-- Body-Content -->
                     <div class="dashboard-inner-wrap">
                         <div class="container py-100">
-                            <div class="dashboard-title d-flex align-items-center mb-5">
-                                <i class="fa-solid fa-calendar"></i>
-                                <h4>Assignment</h3>
-                            </div>
                             <!-- Dashboard-Overview -->
                             <div class="dashboard-content">
-                                <button class="btn-secondary" id="btn-add">
-                                    <i class="fa-solid fa-plus"></i>Add New</button>
+                                <a href="./assignment.php" class="href-link ms-2" id="btn-back">
+                                    <i class="fa-solid fa-arrow-left"></i> Go Back</a>
                                 <div class="dashboard-content-wrap mt-4">
-                                    <!-- Search-Box -->
-                                    <div class="search-box">
-                                        <input type="text" placeholder="Search" id="search-input">
-                                        <i class="fa-solid fa-magnifying-glass" id="btn-search"></i>
-                                    </div>
-                                    <div class="dashboard-content-list" id="dashboard-content-list">
-                                        <div class="dashboard-box d-lg-flex justify-content-between align-items-center">
-                                            <div class="left-box">
-                                                <h5>Add Assignment Now</h5>
-                                                <p>Assignment Description</p>
-                                                <span>No Assignment</span>
-                                            </div>
+                                    <div class="dashboard-content-new" id="dashboard-content-list">
+                                        <div class="mb-3 d-flex flex-column">
+                                            <span class="label">Title</span>
+                                            <input type="text" class="title form-control" id="title">                                        
                                         </div>
+                                        <div class="mb-3 d-flex flex-column">
+                                            <span class="label">Description</span> 
+                                            <textarea class="description form-control" id="description"></textarea>
+                                        </div>
+                                        <div class="mb-3 d-flex flex-column">
+                                            <span class="label">Due Date</span> 
+                                            <div class="row gap-2">
+                                                <div class="col-sm-4">
+                                                    <input type="date" class="datepicker form-control col-lg-5" id="date">  
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="time" class="datepicker form-control col-lg-5" id="time">  
+                                                </div>
+                                            </div>  
+                                        </div>
+                                        <button class="btn-secondary mt-2" 
+                                        id="btn-add-notes">SAVE</button>
                                     </div>
                                 </div>
                             </div>
                             <!-- Footer -->
                             <footer class="text-center">
                                 <hr class="border-bottom">
-                                <p class="fw-medium text-muted mt-4">Copyright 2022 - <a href="#"
-                                        class="href-link">AllWrite</a>. All Rights Reserved.</p>
+                                <p class="fw-medium text-muted mt-4">Copyright 2022 - <a href="#" 
+                                    class="href-link">AllWrite</a>. All Rights Reserved.</p>
                             </footer>
                         </div>
                     </div>
@@ -208,7 +211,7 @@ if (isset($_SESSION['isLoggedIn'])) {
     <script src="../assets/scripts/jquery.js"></script>
     <script src="../assets/scripts/main.js"></script>
     <script src="../../middleware/dashboard.js"></script>
-    <script src="../../middleware/assignment.js"></script>
+    <script src="../../middleware/addAssignment.js"></script>
 </body>
 
 </html>
