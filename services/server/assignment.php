@@ -23,6 +23,10 @@ class assignment
     {
         return self::getSearchDisplay($searchInp);
     }
+    public function doMarkAssignmentLate($currentDate)
+    {
+        return self::markAssignmentLate($currentDate);
+    }
     /* Assignment - Functionality - START */
     // Add Assignment Data
     private function addAssignment($title, $description, $duedate)
@@ -42,8 +46,7 @@ class assignment
                         $this->getCurrentDate(), $this->getCurrentDate()
                     )
                 );
-                $result = $stmt->fetch();
-                if (!$result) {
+                if ($stmt) {
                     return "addedAssignment";
                 } else {
                     return "failedAssignment";
@@ -55,7 +58,7 @@ class assignment
             return $error . "connectionErrors";
         }
     }
-    // Get the Subject Notes Data and Display
+    // Get the Assignment Data and Display
     private function getAssignment()
     {
         try {
@@ -72,7 +75,7 @@ class assignment
             return $error . ": Found Error";
         }
     }
-    // Delete the Subject Notes Data
+    // Delete the Assignment Data
     private function deleteAssignment($boxId)
     {
         try {
@@ -88,6 +91,7 @@ class assignment
             return $error . ": Found Error";
         }
     }
+    // Change the Assignment Status
     private function completeAssignment($boxId)
     {
         try {
@@ -109,7 +113,7 @@ class assignment
             return $error . "connectionErrors";
         }
     }
-    // Search Display for Subject Notes data
+    // Search Display for Assignment Data
     private function getSearchDisplay($searchInp)
     {
         try {
@@ -132,6 +136,24 @@ class assignment
         } catch (PDOException $error) {
             return $error . ": Found Error";
         }
+    }
+    // Identify Assignment Status if Late or Not
+    private function markAssignmentLate($currentDate)
+    {
+        try {
+            $markStatus = 'Late';
+            $conn = new database();
+            if ($conn->getStatus()) {
+                $stmt = $conn->getConnection()->prepare($this->markAssignmentLateQuery());
+                $stmt->execute(array($markStatus, $this->getCurrentDate(), $currentDate));
+                return 'markedLate';
+            } else {
+                return 'failedConnection';
+            }
+        } catch (PDOException $error) {
+            return $error . ": Found Error";
+        }
+
     }
     /* Assignment - Functionality - END */
     // Get the User ID
@@ -179,6 +201,10 @@ class assignment
     private function updateAssignmentStatusQuery()
     {
         return "UPDATE `tbl_assignments` SET `status` = ?, `updated_date` = ? WHERE `id`=?";
+    }
+    private function markAssignmentLateQuery()
+    {
+        return "UPDATE `tbl_assignments` SET `status` = ?, `updated_date` = ? WHERE `due_date`=?";
     }
     private function getAssignmentInfoQuery()
     {

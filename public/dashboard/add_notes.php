@@ -49,11 +49,6 @@ if(isset($_SESSION['isLoggedIn'])){
                         </a>
                         <div class="ms-auto" id="navbarNav">
                             <ul class="navbar-nav d-flex align-items-center flex-row gap-2 gap-lg-3">
-                                <li class="nav-item">
-                                    <div class="nav-link">
-                                        <i class="fa-solid fa-bell"></i>
-                                    </div>
-                                </li>
                                 <li class="nav-item nav-settings">
                                     <div class="nav-link dropdown" data-bs-toggle="dropdown" aria-expanded="true">
                                         <img src="../assets/img/profile-male.png" alt="..." style="width: 45px;">
@@ -62,10 +57,12 @@ if(isset($_SESSION['isLoggedIn'])){
                                         <i class="fa-solid fa-chevron-down"></i>
                                         <!-- Head-Nav-Dropdown-Menu -->
                                         <ul class="dropdown-menu mt-2">
-                                            <li><a class="dropdown-item" href="#">PIN Code</a></li>
-                                            <li><a class="dropdown-item" href="#">Change Password</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <button class="dropdown-item" id="btn-logout">Logout</button>
+                                            <li class="dropdown-item" id="btn-pincode">PIN Code</li>
+                                            <li class="dropdown-item" id="btn-changepass">Change Password</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <button class="dropdown-item" id="btn-logout"><i class="fa-solid fa-right-to-bracket"></i> Logout</button>
                                         </ul>
                                     </div>
                                 </li>
@@ -142,16 +139,16 @@ if(isset($_SESSION['isLoggedIn'])){
                             </li>
                             <li class="nav-item">
                                 <a href="assignment.php" class="nav-link py-3 px-2">
-                                    <span><i class="fa-solid fa-calendar"></i> Assignments</span>
+                                    <span><i class="fa-solid fa-calendar"></i> Assignment</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link py-3 px-2">
+                                <a href="subjct.php" class="nav-link py-3 px-2">
                                     <span><i class="fa-solid fa-arrow-up-right-from-square"></i> Resources</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link py-3 px-2">
+                                <a href="todo.php" class="nav-link py-3 px-2">
                                     <span><i class="fa-solid fa-list"></i> To-Do List</span>
                                 </a>
                             </li>

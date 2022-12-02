@@ -33,8 +33,7 @@ class subject
                 $stmt = $conn->getConnection()->prepare($this->addSubNotesQuery());
                 $stmt->execute(array($this->getId(),$title, $description, 
                 $this->getCurrentDate(), $this->getCurrentDate()));
-                $result = $stmt->fetch();
-                if(!$result){
+                if($stmt){
                     return "addedNotes";
                 }else{
                     return "failedNotes";

@@ -4,38 +4,38 @@ require('../server/subject.php');
 if(isset($_POST['choice'])){
     switch($_POST['choice']){            
         case 'addSubNotes':
-            $dashboard = new subject();
-            echo $dashboard->doAddSubNotes($_POST['title'], $_POST['description']);
+            $subnotes = new subject();
+            echo $subnotes->doAddSubNotes($_POST['title'], $_POST['description']);
             break;
 
         case 'viewSubNotes':
-            $dashboard = new subject();
-            echo $dashboard->doViewSubNotes();
+            $subnotes = new subject();
+            echo $subnotes->doViewSubNotes();
             break;
 
         case 'displaySubNotes':
-            $dashboard = new subject();
-            echo $dashboard->doDisplaySubNotes();
+            $subnotes = new subject();
+            echo $subnotes->doDisplaySubNotes();
             break;
         
         case 'deleteSubNotes':
-            $dashboard = new subject();
-            echo $dashboard->doDeleteSubNotes($_POST['boxId']);
+            $subnotes = new subject();
+            echo $subnotes->doDeleteSubNotes($_POST['boxId']);
             break;
 
         case 'setSessionBoxId':
-            $dashboard = new subject();
-            echo $dashboard->doSetSessionBoxId($_POST['boxId']);
+            $subnotes = new subject();
+            echo $subnotes->doSetSessionBoxId($_POST['boxId']);
             break;
         
         case 'getSearchDisplay':
-            $dashboard = new subject();
-            echo $dashboard->doSetSearchDisplay($_POST['searchInp']);
+            $subnotes = new subject();
+            echo $subnotes->doSetSearchDisplay($_POST['searchInp']);
             break;    
 
         case 'updateSubNotes':
-            $dashboard = new subject();
-            echo $dashboard->doUpdateSubNotes($_POST['title'], $_POST['description']);
+            $subnotes = new subject();
+            echo $subnotes->doUpdateSubNotes($_POST['title'], $_POST['description']);
             break;
 
         case 'unsetSessionBoxId':

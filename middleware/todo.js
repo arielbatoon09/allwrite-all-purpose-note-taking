@@ -6,47 +6,28 @@ $(".search-box").keyup(function(event) {
 });
 
 $('#btn-add').click(function(){
-    window.location.href = "./add_assignment.php";
+    window.location.href = "./add_todo.php";
 })
 
 $(document).ready(function(){
     // To View All the Data in Subject Notes
-    requestDoViewAssignment();
-    // Get the Current Date
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1; 
-    let yyyy = today.getFullYear();
-    let hour = today.getHours();
-    let min = today.getMinutes();
-    if(dd < 10){
-        dd = "0"+dd;
-    }if(mm < 10){
-        mm = "0"+mm;
-    }if(hour < 10){
-        hour = "0"+hour;
-    }if(min < 10){
-        min = "0"+min;
-    }
-    let currentDate = yyyy+"-"+mm+"-"+dd+" "+hour+":"+min;  
-    // Get the Assignment Status if Late or Not
-    requestDueDateStatus(currentDate);
+    requestDoViewToDo();
     // To Search Specific Data in Subject Notes
     $('#btn-search').click(function(){
         let searchInp = $('#search-input').val();
         if(searchInp != ""){
             requestDisplaySearch(searchInp);
         }else{
-            requestDoViewAssignment();
+            requestDoViewToDo();
         }
     });
 });
 
-const requestDoViewAssignment =()=> {
+const requestDoViewToDo =()=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/assignlist.php",
-        data: {choice: 'viewAssignment'},
+        url: "../../services/router/todolist.php",
+        data: {choice: 'viewToDo'},
         success: function(data) {
             let json = JSON.parse(data);
             let str = "";
@@ -55,8 +36,8 @@ const requestDoViewAssignment =()=> {
                 `<div class="dashboard-box d-lg-flex justify-content-between align-items-center">`+
                 `<div class="left-box">`+
                     `<h5>`+element.title+`</h5>`+
-                    `<p class="mb-1">`+element.description+`</p>`+
-                    `<span class="due_date">Due Date: `+element.due_date+`</span>`+
+                    `<p class="mb-1 col-12 col-lg-11">`+element.description+`</p>`+
+                    `<span>`+element.updated_date+`</span>`+
                     `<p class="`+element.status+` fw-semibold mt-1">`+element.status+`</p>`+
                 `</div>`+
                 `<div class="right-box d-flex gap-2 gap-lg-3 mt-2 mt-lg-0">`+
@@ -67,20 +48,19 @@ const requestDoViewAssignment =()=> {
                 document.getElementById("dashboard-content-list").innerHTML = str;
                 
                 // To Change the Assigment Status
-                $('.Pending').addClass('text-success');
+                $('.On-Going').addClass('text-success');
                 $('.Completed').addClass('text-warning');
-                $('.Late').addClass('text-danger');
                 $('.mark-Completed').remove();
                 
                 // Button Functionality
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteAssignment(boxId);
+                    requestDoDeleteToDo(boxId);
                     setInterval('location.reload()', 200);
                 });
                 $('.btn-complete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoCompleteAssignment(boxId);
+                    requestDoCompleteToDo(boxId);
                     alert('Completed');
                     setInterval('location.reload()', 200);
                 });
@@ -92,54 +72,32 @@ const requestDoViewAssignment =()=> {
     });
 };
 
-const requestDoDeleteAssignment =(boxId)=> {
+const requestDoDeleteToDo =(boxId)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/assignlist.php",
-        data: {choice:'deleteAssignment', boxId:boxId},
+        url: "../../services/router/todolist.php",
+        data: {choice:'deleteToDo', boxId:boxId},
         success: function(data){
             alert(data);
         }
     })
 };
-const requestDoCompleteAssignment =(boxId)=> {
+const requestDoCompleteToDo =(boxId)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/assignlist.php",
-        data: {choice:'completeAssignment', boxId:boxId},
+        url: "../../services/router/todolist.php",
+        data: {choice:'completeToDo', boxId:boxId},
         success: function(data){
             alert(data);
         }
     })
 };
 
-const requestDueDateStatus =(currentDate)=> {
-    $.ajax({
-        type: "POST",
-        url: "../../services/router/assignlist.php",
-        data: {choice:'viewAssignment'},
-        success: function(data){
-            let json = JSON.parse(data);
-                json.forEach(element => {
-                    if(element.status == "Pending" && element.due_date == currentDate){
-                        $.ajax({
-                            type: "POST",
-                            url: "../../services/router/assignlist.php",
-                            data: {choice:'markAssignmentLate',currentDate:currentDate},
-                            success: function(data){
-                                alert(data);
-                            }
-                        })
-                    }
-                })
-        }
-    })
-}
 
 const requestDisplaySearch =(searchInp)=> {
     $.ajax({
         type: "POST",
-        url: "../../services/router/assignlist.php",
+        url: "../../services/router/todolist.php",
         data: {choice:'getSearchDisplay', searchInp:searchInp},
         success: function(data){
             if(data != 'Not Found Data'){
@@ -150,8 +108,8 @@ const requestDisplaySearch =(searchInp)=> {
                     `<div class="dashboard-box d-lg-flex justify-content-between align-items-center">`+
                     `<div class="left-box">`+
                         `<h5>`+element.title+`</h5>`+
-                        `<p class="mb-1">`+element.description+`</p>`+
-                        `<span class="due_date">Due Date: `+element.due_date+`</span>`+
+                        `<p class="mb-1 col-12 col-lg-11">`+element.description+`</p>`+
+                        `<span>`+element.updated_date+`</span>`+
                         `<p class="`+element.status+` fw-semibold mt-1">`+element.status+`</p>`+
                     `</div>`+
                     `<div class="right-box d-flex gap-2 gap-lg-3 mt-2 mt-lg-0">`+
@@ -162,27 +120,26 @@ const requestDisplaySearch =(searchInp)=> {
                     document.getElementById("dashboard-content-list").innerHTML = str;
                     
                     // To Change the Assigment Status
-                    $('.Pending').addClass('text-success');
+                    $('.On-Going').addClass('text-success');
                     $('.Completed').addClass('text-warning');
-                    $('.Late').addClass('text-danger');
                     $('.mark-Completed').remove();
                     
                     // Button Functionality
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteAssignment(boxId);
+                        requestDoDeleteToDo(boxId);
                         setInterval('location.reload()', 200);
                     });
                     $('.btn-complete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoCompleteAssignment(boxId);
+                        requestDoCompleteToDo(boxId);
                         alert('Completed');
                         setInterval('location.reload()', 200);
                     });
                 });
             }else{
                 alert(data);
-                requestDoViewAssignment();
+                requestDoViewToDo();
             }
         }
     })

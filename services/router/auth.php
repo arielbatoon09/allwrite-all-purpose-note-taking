@@ -13,9 +13,22 @@ if(isset($_POST['choice'])){
             $authentication = new authentication();
             echo $authentication->doLogin($_POST['email'], $_POST['password']);
             break;
-        case 'logout':
-            session_destroy();
-            break;
+
+        case 'changepassword':
+            $authentication = new authentication();
+            echo $authentication->doChangePassword($_POST['oldpassword'], 
+            $_POST['newpassword'], $_POST['confirmpassword']);
+            break;   
+
+        case 'setpincode':
+            $authentication = new authentication();
+            echo $authentication->doSetPinCode($_POST['pincode'], $_POST['confirmpincode']);
+            break;      
+            
+        case 'retrievePass':
+            $authentication = new authentication();
+            echo $authentication->doRetrievePassword($_POST['email'], $_POST['pincode'], $_POST['newpassword']);
+            break;   
     }
 }
 ?>

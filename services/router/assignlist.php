@@ -27,6 +27,12 @@ if(isset($_POST['choice'])){
             $assignment = new assignment();
             echo $assignment->doSetSearchDisplay($_POST['searchInp']);
             break;   
+
+        case 'markAssignmentLate':
+            $assignment = new assignment();
+            echo $assignment->doMarkAssignmentLate($_POST['currentDate']);
+            break;
+
     }
 }
 ?>
