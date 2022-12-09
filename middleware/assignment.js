@@ -10,7 +10,7 @@ $('#btn-add').click(function(){
 })
 
 $(document).ready(function(){
-    // To View All the Data in Subject Notes
+    // To View All the Data in Assignment Notes
     requestDoViewAssignment();
     // Get the Current Date
     let today = new Date();
@@ -31,7 +31,7 @@ $(document).ready(function(){
     let currentDate = yyyy+"-"+mm+"-"+dd+" "+hour+":"+min;  
     // Get the Assignment Status if Late or Not
     requestDueDateStatus(currentDate);
-    // To Search Specific Data in Subject Notes
+    // To Search Specific Data in Assignment Notes
     $('#btn-search').click(function(){
         let searchInp = $('#search-input').val();
         if(searchInp != ""){
@@ -75,14 +75,31 @@ const requestDoViewAssignment =()=> {
                 // Button Functionality
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteAssignment(boxId);
-                    setInterval('location.reload()', 200);
+                    swal({
+                        title: "Are you sure?",
+                        icon: "warning",
+                        dangerMode: false,
+                        buttons: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                          requestDoDeleteAssignment(boxId);
+                          setInterval('location.reload()', 200);
+                        }
+                      });
                 });
                 $('.btn-complete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoCompleteAssignment(boxId);
-                    alert('Completed');
-                    setInterval('location.reload()', 200);
+                    swal({
+                        text: "Already finished this assignment?",
+                        buttons: true,
+                      })
+                      .then((willMark) => {
+                        if (willMark) {
+                            requestDoCompleteAssignment(boxId);
+                            setInterval('location.reload()', 200);
+                        }
+                      });
                 });
             });
         },
@@ -98,7 +115,10 @@ const requestDoDeleteAssignment =(boxId)=> {
         url: "../../services/router/assignlist.php",
         data: {choice:'deleteAssignment', boxId:boxId},
         success: function(data){
-            alert(data);
+            // success delete
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -108,7 +128,10 @@ const requestDoCompleteAssignment =(boxId)=> {
         url: "../../services/router/assignlist.php",
         data: {choice:'completeAssignment', boxId:boxId},
         success: function(data){
-            alert(data);
+            // success marked complete
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -127,14 +150,29 @@ const requestDueDateStatus =(currentDate)=> {
                             url: "../../services/router/assignlist.php",
                             data: {choice:'markAssignmentLate',currentDate:currentDate},
                             success: function(data){
-                                alert(data);
+                                swal({
+                                    title: "Marked Late",
+                                    icon: "warning",
+                                    button: "Okay",
+                                  })
+                                  .then((willMark) => {
+                                    if (willMark) {
+                                        setInterval('location.reload()', 1000);
+                                    }
+                                  });
+                            },
+                            error: function(thrownError) {
+                                alert(thrownError);
                             }
                         })
                     }
                 })
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
-}
+};
 
 const requestDisplaySearch =(searchInp)=> {
     $.ajax({
@@ -170,20 +208,45 @@ const requestDisplaySearch =(searchInp)=> {
                     // Button Functionality
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteAssignment(boxId);
-                        setInterval('location.reload()', 200);
+                        swal({
+                            title: "Are you sure?",
+                            icon: "warning",
+                            dangerMode: false,
+                            buttons: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                            requestDoDeleteAssignment(boxId);
+                            setInterval('location.reload()', 200);
+                            }
+                        });
                     });
                     $('.btn-complete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoCompleteAssignment(boxId);
-                        alert('Completed');
-                        setInterval('location.reload()', 200);
+                        swal({
+                            text: "Already finished this assignment?",
+                            buttons: true,
+                        })
+                        .then((willMark) => {
+                            if (willMark) {
+                                requestDoCompleteAssignment(boxId);
+                                setInterval('location.reload()', 200);
+                            }
+                        });
                     });
                 });
             }else{
-                alert(data);
+                swal({
+                    title: "Something went wrong",
+                    text: "Search Not Found!",
+                    icon: "error",
+                    button: "Okay",
+                  });
                 requestDoViewAssignment();
             }
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };

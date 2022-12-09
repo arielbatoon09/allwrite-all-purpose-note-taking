@@ -28,6 +28,23 @@ if(isset($_SESSION['isLoggedIn'])){
 </head>
 
 <body class="dashboard-body">
+    <!-- Pre-Loader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
     <!-- Main-Container -->
     <main class="page">
         <!-- Navigation -->
@@ -175,7 +192,11 @@ if(isset($_SESSION['isLoggedIn'])){
                                             <textarea class="description form-control" id="description"></textarea>
                                         </div>
                                         <button class="btn-secondary mt-2" 
-                                        id="btn-add-notes">SAVE</button>
+                                        id="btn-add-todo">SAVE</button>
+                                        <button class="btn-secondary visually-hidden" type="button" disabled id="btn-request">
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            Loading...
+                                        </button>
                                     </div>
                                 </div>
                             </div>

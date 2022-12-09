@@ -1,3 +1,14 @@
+"use strict";
+
+//===== Prealoder
+window.onload = function () {
+  window.setTimeout(fadeout, 200);
+}
+
+function fadeout() {
+  document.querySelector('.preloader').style.opacity = '0';
+  document.querySelector('.preloader').style.display = 'none';
+}
 $('#card-link1').hover(
     function() {
       $('#sub-arrow').css({"margin-left": "20px", "transition": "all 0.3s ease-out"});

@@ -11,7 +11,6 @@ $('#btn-register').click(function(){
     let password = $('#password').val();
     let confirmpass = $('#confirmpass').val();
     checkIfValid(fullname, email, password, confirmpass);
-    //checkIfValid(fullname, email, password, confirmpass);
 });
 
 const checkIfValid =(fullname, email, password, confirmpass)=> {
@@ -46,10 +45,17 @@ const requestRegister =(fullname, email, password, confirmpass)=> {
         success: function(data) {
             switch(data){
                 case 'successCreateAccount':
-                    swal("Register Account", "You created sucessfully. Login Now!", "success", {
-                        button: "Okay",
-                    })
-                    setInterval('window.location.href="./login.php"', 1000);
+                    swal({
+                        icon: 'success',
+                        title: 'Register Account',
+                        text: "Registered Successfully!",
+                        buttons: 'Okay',
+                      })
+                      .then((willRegister) => {
+                        if (willRegister) {
+                            window.location.href = './login.php';
+                        }
+                    });
                     break;
                 case 'emailTaken':
                     swal("Error", "Email is already existing!", "error", {
@@ -72,6 +78,9 @@ const requestRegister =(fullname, email, password, confirmpass)=> {
                     break;
                 case 'invalidCredentials':
                     $('#email').addClass('is-invalid');
+                    break;
+                default:
+                    console.log('Not Found Functionality...');
                     break;
                 }
         },

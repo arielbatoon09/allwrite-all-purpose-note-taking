@@ -10,9 +10,9 @@ $('#btn-add').click(function(){
 })
 
 $(document).ready(function(){
-    // To View All the Data in Subject Notes
+    // To View All the Data in Resources
     requestDoViewResources();
-    // To Search Specific Data in Subject Notes
+    // To Search Specific Data in Resources
     $('#btn-search').click(function(){
         let searchInp = $('#search-input').val();
         if(searchInp != ""){
@@ -46,8 +46,18 @@ const requestDoViewResources =()=> {
                 document.getElementById("dashboard-content-list").innerHTML = str;
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteSubNotes(boxId);
-                    setInterval('location.reload()', 200);
+                    swal({
+                        title: "Are you sure?",
+                        icon: "warning",
+                        dangerMode: false,
+                        buttons: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                            requestDoDeleteResources(boxId);
+                            setInterval('location.reload()', 200);  
+                        }
+                      });
                 });
             });
         },
@@ -57,13 +67,16 @@ const requestDoViewResources =()=> {
     });
 };
 
-const requestDoDeleteSubNotes =(boxId)=> {
+const requestDoDeleteResources =(boxId)=> {
     $.ajax({
         type: "POST",
         url: "../../services/router/resrc.php",
         data: {choice:'deleteResources', boxId:boxId},
         success: function(data){
-            alert(data);
+            //success deleted
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -93,14 +106,32 @@ const requestDisplaySearch =(searchInp)=> {
                     document.getElementById("dashboard-content-list").innerHTML = str;
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteSubNotes(boxId);
-                        setInterval('location.reload()', 200);
+                        swal({
+                            title: "Are you sure?",
+                            icon: "warning",
+                            dangerMode: false,
+                            buttons: true,
+                          })
+                          .then((willDelete) => {
+                            if (willDelete) {
+                                requestDoDeleteResources(boxId);
+                                setInterval('location.reload()', 200);  
+                            }
+                          });
                     });
                 });
             }else{
-                alert(data);
+                swal({
+                    title: "Something went wrong",
+                    text: "Search Not Found!",
+                    icon: "error",
+                    button: "Okay",
+                  });
                 requestDoViewResources();
             }
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };

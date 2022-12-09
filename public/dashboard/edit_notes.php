@@ -28,6 +28,23 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
 </head>
 
 <body class="dashboard-body">
+    <!-- Pre-Loader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>      
     <!-- Main-Container -->
     <main class="page">
         <!-- Navigation -->
@@ -175,6 +192,10 @@ if(isset($_SESSION['isLoggedIn']) && isset($_SESSION['setBoxId'])){
                                         </div>
                                         <button class="btn-secondary mt-2" 
                                         id="btn-edit-notes">UPDATE</button>
+                                        <button class="btn-secondary visually-hidden" type="button" disabled id="btn-request">
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            Loading...
+                                        </button>
                                     </div>
                                 </div>
                             </div>

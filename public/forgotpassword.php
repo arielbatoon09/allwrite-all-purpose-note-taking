@@ -26,6 +26,23 @@ if(isset($_SESSION['isLoggedIn'])){
 </head>
 
 <body class="auth-body">
+    <!-- Pre-Loader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
   <!-- Main-Container -->
   <main class="page">
     <!-- Authentication-Section -->
@@ -42,7 +59,7 @@ if(isset($_SESSION['isLoggedIn'])){
             </div>
             <div class="auth-input">
               <label for="pincode" class="form-label">PIN Code</label>
-              <input type="text" class="form-control" id="pincode" placeholder="Enter PIN Code">
+              <input type="number" class="form-control" id="pincode" placeholder="Enter PIN Code">
               <i class="fa-solid fa-key"></i>
             </div>
             <div class="auth-input has-validation">
@@ -67,6 +84,7 @@ if(isset($_SESSION['isLoggedIn'])){
   <!-- SCRIPTS -->
   <script src="assets/scripts/bootstrap.min.js"></script>
   <script src="assets/scripts/jquery.js"></script>
+  <script src="assets/scripts/main.js"></script>
   <script src="assets/scripts/sweetalert.js"></script>
   <script src="../middleware/forgot.js"></script>
 </body>

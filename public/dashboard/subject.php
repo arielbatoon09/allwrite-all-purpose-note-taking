@@ -28,6 +28,23 @@ if (isset($_SESSION['isLoggedIn'])) {
 </head>
 
 <body class="dashboard-body">
+    <!-- Pre-Loader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>     
     <!-- Main-Container -->
     <main class="page">
         <!-- Navigation -->
@@ -201,6 +218,7 @@ if (isset($_SESSION['isLoggedIn'])) {
     <!-- SCRIPTS -->
     <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
     <script src="../assets/scripts/jquery.js"></script>
+    <script src="../assets/scripts/sweetalert.js"></script>
     <script src="../assets/scripts/main.js"></script>
     <script src="../../middleware/dashboard.js"></script>
     <script src="../../middleware/subnotes.js"></script>

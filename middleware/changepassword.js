@@ -29,10 +29,17 @@ const requestChangePassword =(oldpassword, newpassword, confirmpassword)=> {
         success: function(data) {
             switch(data){
                 case 'changedPassword':
-                    swal("Account", "Changed password successfully!", "success", {
-                        button: "Okay",
+                    swal({
+                        icon: 'success',
+                        title: 'Account',
+                        text: "Changed password successfully!",
+                        buttons: 'Okay',
+                      })
+                      .then((willRetrieve) => {
+                        if (willRetrieve) {
+                            window.location.href = './index.php';
+                        }
                     });
-                    setInterval('location.reload()', 1000);
                     break;
 
                 case 'PasswordDoesNotMatch':
@@ -42,7 +49,7 @@ const requestChangePassword =(oldpassword, newpassword, confirmpassword)=> {
                     break;
 
                 case 'PasswordNotFound':
-                    swal("Error", "Password Not Found!", "error", {
+                    swal("Error", "Incorrect Old Password!", "error", {
                         button: "Okay",
                     });
                     break; 
@@ -55,7 +62,11 @@ const requestChangePassword =(oldpassword, newpassword, confirmpassword)=> {
                     
                 case 'passwordNotMeetRequirements':
                     $('#newpassword').addClass('is-invalid');
-                    break;                   
+                    break;    
+                
+                default:
+                    console.log('Not Found Functionality...');
+                    break;
             }
         },
         error: function(thrownError) {

@@ -10,9 +10,9 @@ $('#btn-add').click(function(){
 })
 
 $(document).ready(function(){
-    // To View All the Data in Subject Notes
+    // To View All the Data in ToDo-List
     requestDoViewToDo();
-    // To Search Specific Data in Subject Notes
+    // To Search Specific Data in ToDo-List
     $('#btn-search').click(function(){
         let searchInp = $('#search-input').val();
         if(searchInp != ""){
@@ -55,14 +55,31 @@ const requestDoViewToDo =()=> {
                 // Button Functionality
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteToDo(boxId);
-                    setInterval('location.reload()', 200);
+                    swal({
+                        title: "Are you sure?",
+                        icon: "warning",
+                        dangerMode: false,
+                        buttons: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                            requestDoDeleteToDo(boxId);
+                          setInterval('location.reload()', 200);
+                        }
+                      });
                 });
                 $('.btn-complete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoCompleteToDo(boxId);
-                    alert('Completed');
-                    setInterval('location.reload()', 200);
+                    swal({
+                        text: "Already finished this task?",
+                        buttons: true,
+                      })
+                      .then((willMark) => {
+                        if (willMark) {
+                            requestDoCompleteToDo(boxId);
+                            setInterval('location.reload()', 200);
+                        }
+                      });
                 });
             });
         },
@@ -78,7 +95,10 @@ const requestDoDeleteToDo =(boxId)=> {
         url: "../../services/router/todolist.php",
         data: {choice:'deleteToDo', boxId:boxId},
         success: function(data){
-            alert(data);
+            // success deleted todo
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -88,7 +108,10 @@ const requestDoCompleteToDo =(boxId)=> {
         url: "../../services/router/todolist.php",
         data: {choice:'completeToDo', boxId:boxId},
         success: function(data){
-            alert(data);
+            // success marked status
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -127,20 +150,45 @@ const requestDisplaySearch =(searchInp)=> {
                     // Button Functionality
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteToDo(boxId);
-                        setInterval('location.reload()', 200);
+                        swal({
+                            title: "Are you sure?",
+                            icon: "warning",
+                            dangerMode: false,
+                            buttons: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                requestDoDeleteToDo(boxId);
+                            setInterval('location.reload()', 200);
+                            }
+                        });
                     });
                     $('.btn-complete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoCompleteToDo(boxId);
-                        alert('Completed');
-                        setInterval('location.reload()', 200);
+                        swal({
+                            text: "Already finished this task?",
+                            button: "Yes!",
+                        })
+                        .then((willMark) => {
+                            if (willMark) {
+                                requestDoCompleteToDo(boxId);
+                                setInterval('location.reload()', 200);
+                            }
+                        });
                     });
                 });
             }else{
-                alert(data);
-                requestDoViewToDo();
+                swal({
+                    title: "Something went wrong",
+                    text: "Search Not Found!",
+                    icon: "error",
+                    button: "Okay",
+                  });
+                  requestDoViewToDo();
             }
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };

@@ -5,12 +5,15 @@ $('#btn-add-notes').click(function(){
 })
 
 const requestDoAddNotes =(title, description)=> {
+    $('#btn-add-notes').addClass('visually-hidden');
+    $('#btn-request').removeClass('visually-hidden');
     $.ajax({
         type: "POST",
         url: "../../services/router/subnotes.php",
         data: {choice: 'addSubNotes', title:title, description:description },
         success: function(data) {
-            alert(data);
+            $('#btn-add-notes').removeClass('visually-hidden');
+            $('#btn-request').addClass('visually-hidden');
             setInterval('location.reload()', 200);
             window.location.href = "./subject.php";
         },

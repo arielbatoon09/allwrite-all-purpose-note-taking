@@ -4,7 +4,7 @@ $(document).ready(function(){
 $('#btn-edit-notes').click(function(){
     let newTitle = $('#title').val();
     let newDescription = $('#description').val();
-    requestDoGetNewSubNotes(newTitle, newDescription);
+    requestDoUpdateSubNotes(newTitle, newDescription);
     requestUnsetNoteIdSession();
 });
 
@@ -12,15 +12,21 @@ $('#btn-back').click(function(){
     requestUnsetNoteIdSession();
 });
 
-const requestDoGetNewSubNotes =(newTitle, newDescription)=> {
+const requestDoUpdateSubNotes =(newTitle, newDescription)=> {
+    $('#btn-edit-notes').addClass('visually-hidden');
+    $('#btn-request').removeClass('visually-hidden');
     $.ajax({
         type: "POST",
         url: "../../services/router/subnotes.php",
         data: {choice:'updateSubNotes', title:newTitle, description:newDescription},
         success: function(data){
-            alert(data);
+            $('#btn-edit-notes').removeClass('visually-hidden');
+            $('#btn-request').addClass('visually-hidden');
             setInterval('location.reload()', 200);
             window.location.href = "./subject.php";
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     });
 };

@@ -27,10 +27,17 @@ const requestPinCode =(pincode, confirmpincode) => {
         success: function(data) {
             switch(data){
                 case 'setPinSuccess':
-                    swal("PIN Code", "PIN Code Setup Sucessful.", "success", {
-                        button: "Okay",
-                    })
-                    setInterval('location.reload()', 1000);
+                    swal({
+                        icon: 'success',
+                        title: 'PIN Code',
+                        text: "Successfully setup your PIN Code!",
+                        buttons: 'Okay',
+                      })
+                      .then((willRetrieve) => {
+                        if (willRetrieve) {
+                            window.location.href = './index.php';
+                        }
+                    });
                     break;
                 case 'pinCodeDoesNotMeetRequirements':
                     $('#pincode').addClass('is-invalid');
@@ -50,6 +57,9 @@ const requestPinCode =(pincode, confirmpincode) => {
                     swal("Error", "Invalid PIN Code. Must be a digit code!", "error", {
                         button: "Okay",
                     });
+                    break;
+                default:
+                    console.log('Not Found Functionality...');
                     break;
                 }
         },

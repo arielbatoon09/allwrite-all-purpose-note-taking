@@ -28,6 +28,23 @@ if (isset($_SESSION['isLoggedIn'])) {
 </head>
 
 <body class="auth-body">
+    <!-- Pre-Loader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
   <!-- Main-Container -->
   <main class="page">
     <!-- Authentication-Section -->
@@ -40,13 +57,13 @@ if (isset($_SESSION['isLoggedIn'])) {
             <p class="text-muted mb-4 fs-6">To retrieve an account in the future, save your 6 digit PIN code.</p>
             <div class="auth-input has-validation">
               <label for="pincode" class="form-label">Set PIN Code</label>
-              <input type="text" class="form-control" id="pincode" placeholder="Enter PIN Code">
+              <input type="number" class="form-control" id="pincode" placeholder="Enter PIN Code">
               <i class="fa-solid fa-key"></i>
               <div class="invalid-feedback">Please enter 6 digit code.</div>
             </div>
             <div class="auth-input">
               <label for="confirmpincode" class="form-label">Confirm PIN Code</label>
-              <input type="text" class="form-control" id="confirmpincode" placeholder="Confirm PIN Code">
+              <input type="number" class="form-control" id="confirmpincode" placeholder="Confirm PIN Code">
               <i class="fa-solid fa-key"></i>
             </div>
             <div class="auth-btn">

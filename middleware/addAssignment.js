@@ -1,4 +1,4 @@
-$('#btn-add-notes').click(function(){
+$('#btn-add-assignment').click(function(){
     let title = $('#title').val();
     let description = $('#description').val();
     let date = $('#date').val();
@@ -8,12 +8,15 @@ $('#btn-add-notes').click(function(){
 })
 
 const requestDoAddNotes =(title, description, duedate)=> {
+    $('#btn-add-assignment').addClass('visually-hidden');
+    $('#btn-request').removeClass('visually-hidden');
     $.ajax({
         type: "POST",
         url: "../../services/router/assignlist.php",
         data: {choice: 'addAssignment', title:title, description:description, duedate:duedate },
         success: function(data) {
-            alert(data);
+            $('#btn-add-assignment').removeClass('visually-hidden');
+            $('#btn-request').addClass('visually-hidden');
             setInterval('location.reload()', 200);
             window.location.href = "./assignment.php";
         },

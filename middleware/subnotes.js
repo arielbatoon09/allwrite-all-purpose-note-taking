@@ -48,18 +48,44 @@ const requestDoViewSubNotes =()=> {
                 document.getElementById("dashboard-content-list").innerHTML = str;
                 $('.btn-delete').click(function(){
                     let boxId = $(this).attr("id");
-                    requestDoDeleteSubNotes(boxId);
-                    setInterval('location.reload()', 200);
+                    swal({
+                        title: "Are you sure?",
+                        icon: "warning",
+                        dangerMode: false,
+                        buttons: true,
+                      })
+                      .then((willDelete) => {
+                        if (willDelete) {
+                          requestDoDeleteSubNotes(boxId);
+                          setInterval('location.reload()', 200);
+                        }
+                      });
                 });
                 $('.btn-edit').click(function(){
                     let boxId = $(this).attr("id");
-                    requestNoteIdSession(boxId);
-                    window.location.href = "./edit_notes.php";
+                    swal({
+                        text: "Are you sure you want to do this?",
+                        buttons: true,
+                      })
+                      .then((willEdit) => {
+                        if (willEdit) {
+                          requestNoteIdSession(boxId);
+                          window.location.href = "./edit_notes.php";
+                        }
+                      });
                 });
                 $('.btn-view').click(function(){
                     let boxId = $(this).attr("id");
-                    requestNoteIdSession(boxId);
-                    window.location.href = "./view_notes.php";
+                    swal({
+                        text: "Do you want to view your notes?",
+                        buttons: true,
+                      })
+                      .then((willEdit) => {
+                        if (willEdit) {
+                            requestNoteIdSession(boxId);
+                            window.location.href = "./view_notes.php";
+                        }
+                      });
                 });
             });
         },
@@ -75,7 +101,10 @@ const requestDoDeleteSubNotes =(boxId)=> {
         url: "../../services/router/subnotes.php",
         data: {choice:'deleteSubNotes', boxId:boxId},
         success: function(data){
-            alert(data);
+            //success request delete
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };
@@ -86,7 +115,7 @@ const requestNoteIdSession =(boxId)=> {
         url: "../../services/router/subnotes.php",
         data: {choice:'setSessionBoxId', boxId:boxId},
         success: function(data){
-            alert(data);
+            //success add noteid  session
         }
     })
 };
@@ -117,24 +146,58 @@ const requestDisplaySearch =(searchInp)=> {
                     document.getElementById("dashboard-content-list").innerHTML = str;
                     $('.btn-delete').click(function(){
                         let boxId = $(this).attr("id");
-                        requestDoDeleteSubNotes(boxId);
-                        setInterval('location.reload()', 200);
+                        swal({
+                            title: "Are you sure?",
+                            icon: "warning",
+                            dangerMode: false,
+                            buttons: true,
+                          })
+                          .then((willDelete) => {
+                            if (willDelete) {
+                              requestDoDeleteSubNotes(boxId);
+                              setInterval('location.reload()', 200);
+                            }
+                          });
                     });
                     $('.btn-edit').click(function(){
                         let boxId = $(this).attr("id");
-                        requestNoteIdSession(boxId);
-                        window.location.href = "./edit_notes.php";
+                        swal({
+                            text: "Are you sure you want to do this?",
+                            buttons: true,
+                          })
+                          .then((willEdit) => {
+                            if (willEdit) {
+                              requestNoteIdSession(boxId);
+                              window.location.href = "./edit_notes.php";
+                            }
+                          });
                     });
                     $('.btn-view').click(function(){
                         let boxId = $(this).attr("id");
-                        requestNoteIdSession(boxId);
-                        window.location.href = "./view_notes.php";
+                        swal({
+                            text: "Do you want to view your notes?",
+                            buttons: true,
+                          })
+                          .then((willView) => {
+                            if (willView) {
+                                requestNoteIdSession(boxId);
+                                window.location.href = "./view_notes.php";
+                            }
+                          });
                     });
                 });
             }else{
-                alert(data);
+                swal({
+                    title: "Something went wrong",
+                    text: "Search Not Found!",
+                    icon: "error",
+                    button: "Okay",
+                  });
                 requestDoViewSubNotes();
             }
+        },
+        error: function(thrownError) {
+            alert(thrownError);
         }
     })
 };

@@ -28,16 +28,31 @@ const requestLogin =(email, password)=> {
         success: function(data) {
             switch(data){
                 case 'success':
-                    swal("Login Account", "Logged In Sucessfully!", "success", {
-                        button: "Okay",
+                    swal({
+                        icon: 'success',
+                        title: 'Login Account',
+                        text: "Logged in successfully!",
+                        buttons: 'Okay',
+                      })
+                      .then((willLogin) => {
+                        if (willLogin) {
+                            setInterval('location.reload()', 200);;
+                        }
                     });
-                    setInterval('location.reload()', 1000);
                     break;
 
                 case 'failedLogin':
                     swal("Error", "Invalid Credentials!", "error", {
                         button: "Okay",
                     });
+                    break;
+
+                case 'invalidCredentials':
+                    $('#email').addClass('is-invalid');
+                    break;
+
+                default:
+                    console.log('Not Found Functionality...');
                     break;
             }
         },

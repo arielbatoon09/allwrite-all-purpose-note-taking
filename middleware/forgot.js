@@ -29,10 +29,17 @@ const requestRetrieve =(email, pincode, newpassword)=> {
         success: function(data) {
             switch(data){
                 case 'retrieveSuccessfully':
-                    swal("Retrieve Account", "Changed Password Successfully!", "success", {
-                        button: "Okay",
+                    swal({
+                        icon: 'success',
+                        title: 'Retrieved Account',
+                        text: "Changed Password Successfully!",
+                        buttons: 'Okay',
+                      })
+                      .then((willRetrieve) => {
+                        if (willRetrieve) {
+                            window.location.href = './login.php';
+                        }
                     });
-                    setInterval('location.reload()', 1000);
                     break;
 
                 case 'accountNotFound':
@@ -49,7 +56,11 @@ const requestRetrieve =(email, pincode, newpassword)=> {
                     swal("Error", "Invalid Credentials. Please try again!", "error", {
                         button: "Okay",
                     });
-                    break;                
+                    break;  
+                
+                default:
+                    console.log('Function Not Found...');
+                    break;
             }
         },
         error: function(thrownError) {

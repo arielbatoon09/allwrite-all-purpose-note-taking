@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION['isLoggedIn'])){
   if($_SESSION["isLoggedIn"] == 'success'){
@@ -22,7 +22,7 @@ if(isset($_SESSION['isLoggedIn'])){
   <!-- Favicon -->
   <link rel="icon" href="assets/img/logo.png">
   <!-- Page-Title -->
-  <title>AllWrite | Login</title>
+  <title>404 Page Not Found</title>
 </head>
 
 <body class="auth-body">
@@ -45,40 +45,10 @@ if(isset($_SESSION['isLoggedIn'])){
     </div>     
   <!-- Main-Container -->
   <main class="page">
-    <!-- Authentication-Section -->
-    <section class="auth-form pb-100">
-      <div class="container">
-        <div class="row mx-auto py-50 d-flex justify-content-center align-items-center">
-          <!-- Auth-Inputs -->
-          <div class="auth-inputs col-12 col-lg-5 pt-5">
-            <p class="text-muted mb-1">Welcome to AllWrite 👋</p>
-            <h2 class="text-uppercase mb-4">Login Panel</h2>
-            <div class="auth-input has-validation">
-              <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter Email Address">
-              <i class="fa-solid fa-envelope"></i>
-              <div class="invalid-feedback">
-								Please include an "@" in the email address.
-							</div>
-            </div>
-            <div class="auth-input">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Enter Password">
-              <i class="fa-solid fa-lock"></i>
-            </div>
-            <div class="auth-forgot mb-4 ms-1">
-              <a href="forgotpassword.php" class="href-link fw-semibold">Forgot Password?</a>
-            </div>
-            <div class="auth-btn">
-              <button class="btn-primary" id="btn-login">Login</button>
-            </div>
-            <hr class="border-bottom mt-4">
-            <div class="auth-href text-center">
-              <p class="fs-6">Don't have an account? <a href="register.php" class="href-link">Register</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- 404-Section -->
+    <section class="d-flex flex-column justify-content-center align-items-center w-100" style="height: 100vh;">
+        <h1>404 ERROR!!!</h1>
+        <h1>PAGE NOT FOUND</h1>
     </section>
   </main>
 
