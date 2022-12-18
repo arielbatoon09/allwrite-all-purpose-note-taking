@@ -36,7 +36,7 @@ const requestLogout =() => {
         url: "../../services/router/dashboard.php",
         data: {choice: 'logout'},
         success: function(data) {
-            window.location.href = "../login.php";
+            window.location.href = "../login";
         },
         error: function(thrownError) {
             alert(thrownError);

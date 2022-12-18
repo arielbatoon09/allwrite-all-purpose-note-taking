@@ -53,7 +53,7 @@ const requestRegister =(fullname, email, password, confirmpass)=> {
                       })
                       .then((willRegister) => {
                         if (willRegister) {
-                            window.location.href = './login.php';
+                            window.location.href = './login';
                         }
                     });
                     break;

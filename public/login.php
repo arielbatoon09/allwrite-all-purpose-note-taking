@@ -46,9 +46,12 @@ if(isset($_SESSION['isLoggedIn'])){
   <!-- Main-Container -->
   <main class="page">
     <!-- Authentication-Section -->
-    <section class="auth-form pb-100">
+    <section class="auth-form py-100">
       <div class="container">
-        <div class="row mx-auto py-50 d-flex justify-content-center align-items-center">
+        <div class="row mx-auto d-flex justify-content-center align-items-center">
+        <div>
+          <a href="../index"><p class="text-center href-link">Go Back To Home Page</p></a>
+        </div>
           <!-- Auth-Inputs -->
           <div class="auth-inputs col-12 col-lg-5 pt-5">
             <p class="text-muted mb-1">Welcome to AllWrite 👋</p>
@@ -74,7 +77,7 @@ if(isset($_SESSION['isLoggedIn'])){
             </div>
             <hr class="border-bottom mt-4">
             <div class="auth-href text-center">
-              <p class="fs-6">Don't have an account? <a href="register.php" class="href-link">Register</a></p>
+              <p class="fs-6">Don't have an account? <a href="register" class="href-link">Register</a></p>
             </div>
           </div>
         </div>

@@ -48,7 +48,10 @@ if(isset($_SESSION['isLoggedIn'])){
 		<!-- Authentication-Section -->
 		<section class="auth-form">
 			<div class="container">
-				<div class="row mx-auto py-50 d-flex justify-content-center align-items-center">
+				<div class="row mx-auto d-flex justify-content-center align-items-center">
+				<div>
+					<a href="../index"><p class="text-center href-link">Go Back To Home Page</p></a>
+				</div>
 					<!-- Auth-Inputs -->
 					<div class="auth-inputs col-12 col-lg-6 pt-5">
 						<h2 class="text-uppercase">Create an account</h2>
@@ -100,7 +103,7 @@ if(isset($_SESSION['isLoggedIn'])){
 						<div class="auth-href text-center">
 							<p class="fs-6">
 								Already have an account?
-								<a href="login.php" class="href-link">Login</a>
+								<a href="login" class="href-link">Login</a>
 							</p>
 						</div>
 					</div>

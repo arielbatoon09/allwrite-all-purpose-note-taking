@@ -1,0 +1,30 @@
+.homepage{
+    .homepage-wrapper{
+        h1{
+            color: #343a40;
+            font-size: 4rem;
+            font-weight: 900;
+        }
+        h2{
+            color: #3f72fd;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+    }
+}
+
+@media only screen and (max-width: 992px){
+    .homepage{
+        .homepage-wrapper{
+            h1{
+                font-size: 2rem;
+            }
+            h2{
+                font-size: 1.5rem;
+            }
+            p{
+                font-size: 0.9rem;
+            }
+        }
+    }
+}

@@ -12,6 +12,19 @@
     background: #5984fa;
     transition: all 0.2s ease-in;
 }
+.btn-primary-v2{
+    border: none;
+    outline: none;
+    background: $clr-primary;
+    color: $clr-white;
+    padding: 10px 30px;
+    border-radius: 25px;
+    transition: all 0.2s ease-out;
+}
+.btn-primary-v2:hover{
+    background: #5984fa;
+    transition: all 0.2s ease-in;
+}
 .btn-secondary{
     border: none;
     outline: none;
