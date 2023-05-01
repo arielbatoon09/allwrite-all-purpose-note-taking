@@ -1,16 +1,6 @@
-<img align="center" src="./01-header.png">
+# ALLWRITE APPLICATION
 
-<div align="center">
-
-[Treehouse](https://teamtreehouse.com) - [Blog](https://teamtreehouse.com/blog) - [Twitter](https://twitter.com/treehouse) - [Youtube](https://www.youtube.com/gotreehouse) - [Instagram](https://www.instagram.com/teamtreehouse/) - [Linkedin](https://www.linkedin.com/school/treehouse-island-inc-/)
-
-</div>
-
-# <p align="center">Gulpfile Setup using gulp.js</p>
-
-<br>
-<br>
-
-What is gulp? According to their homepage [gulpjs.com](https://www.gulpjs.com), it's a toolkit to automate & enhance your workflow. What exactly does that mean? Well, for medium to large-sized projects you may want to have a folder with all your styles and scripts minified. This can significantly decrease file sizes and is usually best practice when deploying your app. Gulp can do all the hard work for you. It can throw all your final code into a new folder, minify it, and even add extra things to make your code even better!
-
-You can follow along on [Treehouse Blog](https://www.teamtreehouse.com/blog/gulpfile-setup) where I take you through setting up a basic gulpfile for your own projects and apps. Once we're done, you should have a clear understanding of how gulp works as well as add even more features to make your gulpfile even more powerful. If at anytime you need to check the source code, be sure to refer back to this repo.
+<h1>All-Purpose Note-Taking</h1>
+<h2>Keep track of your notes, ideas, and to-do lists in one place.</h2>
+<p>to-do lists in one place.
+The AllWrite web application is a tool for creating and organizing notes and tasks. It includes features such as a to-do list and an assignment list to help users keep track of tasks and deadlines. These features work together to provide a comprehensive and user-friendly tool for staying. </p>
